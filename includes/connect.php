@@ -6,9 +6,10 @@ if(!defined('QUYFE')){
 try {
     if(class_exists('PDO')) {
         $options = array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAME utf8",
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAME utf8", // Hỗ trợ tiếng việt
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Đẩy lỗi vào ngoại lệ
-        )
+        );
+        $conn = new PDO("mysql:host=$host; dbname=$dbname", $user_db, );
     }
 } catch (\Throwable $th) {
     //throw $th;
