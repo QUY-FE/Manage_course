@@ -1,7 +1,7 @@
 <?php
 const _QUYFE = true;
 
-const _Module = 'dashboard';
+const _module = 'dashboard';
 const _action = 'index';
 // Khai báo Database
 const _host = 'localhost';
