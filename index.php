@@ -7,17 +7,18 @@ ob_start();
 require_once 'config.php';
 require_once './includes/connect.php';
 require_once './includes/database.php';
+require_once './includes/session.php';
 
-$t = getAll('SELECT * FROM courses');
-
+setSessionFlash('quyfe3', 'PHP_Web_2025');
+$a = getSessionFlash('quyfe3');
+echo $a;
 echo '<pre>';
-print_r($t);
+print_r($_SESSION);
 echo '</pre>';
-die();
 
+// Kiem tra module va action tren url
 $module = _module;
 $action = _action;
-
 if(!empty($_GET["module"])) {                                                                                                   
     $module = $_GET["module"];
 }
@@ -28,11 +29,8 @@ if(!empty($_GET["action"])) {
 
 $path = 'modules/' . $module .'/' . $action . '.php'; 
 
-echo $path;
-
 if (!empty($path)) {
     if(file_exists($path)) {
-        echo 'Ket noi thanh cong';
         require_once $path;
     } else {
         require_once './modules/Error/404.php';
